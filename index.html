@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Calculator app</title>
+  <style>
+    .content {
+      width: 750px;
+    }
+
+    .calc {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 0;
+      gap: 15px;
+    }
+    
+    .btn {
+      width: 50px;
+      height: 38px;
+      background-color: #FFF;
+      color: gray;
+      font-weight: bolder;
+      font-size: 17px;
+      padding: .5rem;
+      text-align: center;
+      line-height: 38px;
+      border-radius: .8rem;
+      cursor: pointer;
+    }
+
+    .btn.reset {
+      width: auto;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .btn.result {
+      width: auto;
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>calc</h1>
+    <p id="valueTheme"></p>
+    <input type="range" name="theme" id="theme" value="1" min="1" max="3" onchange="changeValue()">
+
+  </header>
+  <main>
+    <input type="text" id="values">
+    <table>
+      <tbody>
+        <tr class="calc">
+          <td class="btn btn-number" onclick="addValueTo(this)">7</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">8</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">9</td>
+          <td class="btn btn-operation">DEL</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">4</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">5</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">6</td>
+          <td class="btn btn-number">+</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">1</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">2</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">3</td>
+          <td class="btn btn-number">-</td>
+          <td class="btn btn-number">.</td>
+          <td class="btn btn-number" onclick="addValueTo(this)">0</td>
+          <td class="btn btn-number">/</td>
+          <td class="btn btn-number">x</td>
+          <td class="btn btn-operation reset">RESET</td>
+          <td class="btn btn-operation result">=</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/NavaMegalos" target="_blank">Juan Nava(Megalos)</a>.
+  </div>
+  <script type="text/javascript" defer>
+    let valueRange = document.getElementById('theme').value
+    let valueTheme = document.getElementById('valueTheme')
+    let digits = document.getElementById('values')
+    valueTheme.textContent = valueRange
+
+    const changeValue = () => {
+      valueRange = document.getElementById('theme').value
+      valueTheme.textContent = valueRange
+    }
+
+    const addValueTo = ( cell ) => {
+      let number = cell.firstChild.textContent
+      digits.value += number
+    }
+
+    digits.value = ""
+    
+
+
+  </script>
+</body>
+
+</html>
